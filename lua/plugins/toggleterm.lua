@@ -26,6 +26,7 @@ return {
     },
   },
   opts = {
+    direction="float",
     open_mapping = [[<c-\>]],
   },
 }
