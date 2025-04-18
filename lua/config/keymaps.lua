@@ -2,8 +2,8 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- Toggle markdown 
-vim.keymap.set("n", "<leader>ch",function ()
+-- Toggle markdown
+vim.keymap.set("n", "<leader>ch", function()
   if vim.wo.conceallevel > 0 then
     vim.wo.conceallevel = 0
     vim.notify("Conceal ON")
@@ -11,4 +11,14 @@ vim.keymap.set("n", "<leader>ch",function ()
     vim.wo.conceallevel = 2
     vim.notify("Conceal OFF")
   end
-end, {desc="Toggle Markdown Conceal"})
+end, { desc = "Toggle Markdown Conceal" })
+
+-- Toggle inlay hints
+vim.keymap.set({ "n", "i", "v", "x", "t" }, "<M-i>", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  if vim.lsp.inlay_hint.is_enabled() then
+    vim.notify("Enabled inlay hint")
+  else
+    vim.notify("Disabled inlay hint")
+  end
+end)

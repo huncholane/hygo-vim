@@ -5,6 +5,8 @@ return {
     -- Creates name group for which-key
     {
       "<leader>t",
+      function()
+      end,
       desc = "toggleterm",
     },
     -- Creates a new floating terminal

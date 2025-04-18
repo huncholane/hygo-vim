@@ -7,10 +7,11 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
+local general = vim.api.nvim_create_augroup("autosave_group", { clear = true })
+
 -- autosave on focus lost and buffer change
-local group = vim.api.nvim_create_augroup("autosave_group", { clear = true })
-vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "CmdlineEnter" }, {
-  group = group,
+vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "CmdlineEnter", "QuitPre" }, {
+  group = general,
   callback = function(opts)
     if vim.bo.modifiable and not vim.bo.readonly and vim.bo.modified then
       local file = vim.fn.expand("%t")
@@ -19,3 +20,16 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "CmdlineEnter" }, {
     end
   end,
 })
+
+-- stop making comments on new lines
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    -- Disable comment on new line
+    vim.opt.formatoptions:remove({ "c", "r", "o" })
+  end,
+  group = general,
+  desc = "Disable New Line Comment",
+})
+
+
