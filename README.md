@@ -13,36 +13,17 @@ sudo apt install fd-find
 ```
 sudo apt install ripgrep
 ```
-
-## Steps
-1. Install Neovim
+- Install Neovim
     - Download for linux
 ```
 curl -L -o ~/nvim.appimage https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.appimage
 ```
-2. Add this to bashrc
+- Add this to bashrc
 ```
 alias nvim='~/nvim.appimage'
 alias nv=nvim
 alias vim=nvim
 ```
-3. Backup neovim config
-```
-# required
-mv ~/.config/nvim{,.bak}
-
-# optional but recommended
-mv ~/.local/share/nvim{,.bak}
-mv ~/.local/state/nvim{,.bak}
-mv ~/.cache/nvim{,.bak}
-```
-4. Add a starter kit
-- [LazyVim Starter](https://www.lazyvim.org/installation)
-```
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-rm -rf ~/.config/nvim/.git
-```
-5. Add crazy features by using `:LazyExtras`
 
 ## Setup toggle term `~/.config/nvim/lua/plugins/toggleterm.lua`
 ```

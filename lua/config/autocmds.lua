@@ -9,7 +9,7 @@
 
 -- autosave on focus lost and buffer change
 local group = vim.api.nvim_create_augroup("autosave_group", { clear = true })
-vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {
+vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "CmdlineEnter" }, {
   group = group,
   callback = function(opts)
     if vim.bo.modifiable and not vim.bo.readonly and vim.bo.modified then
@@ -19,4 +19,3 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {
     end
   end,
 })
-
