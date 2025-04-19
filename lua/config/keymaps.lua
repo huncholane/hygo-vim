@@ -23,21 +23,6 @@ vim.keymap.set({ "n", "i", "v", "x", "t" }, "<M-i>", function()
   end
 end)
 
--- Buffer keymaps: Alt-n move right, Alt-p move left
-vim.keymap.set({ "n", "i", "v" }, "<M-l>", function()
-  if vim.bo.buftype ~= "nofile" then
-    vim.cmd("bn")
-  end
-end, { noremap = true, silent = true, desc = "Buffer Right" })
-vim.keymap.set({ "n", "i", "v" }, "<M-h>", function()
-  if vim.bo.buftype ~= "nofile" then
-    vim.cmd("bp")
-  end
-end, { noremap = true, silent = true, desc = "Buffer Left" })
-vim.keymap.set("n", "<leader>bc", function()
-  vim.cmd("bufdo bd")
-end, { noremap = true, silent = true, desc = "Delete All Buffers" })
-
 -- Vim config keymaps
 vim.keymap.set("n", "<leader>v", "", { desc = "Vim Config" })
 vim.keymap.set("n", "<leader>vk", function()

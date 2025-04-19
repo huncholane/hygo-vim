@@ -4,10 +4,14 @@
 
 -- disable completions with ai
 vim.g.ai_cmp = false
-
--- use wsl view to open links
+-- wsl settings
 ---@diagnostic disable-next-line
-vim.ui.open = function(url)
-  local cmd = { "wslview", url }
-  vim.fn.jobstart(cmd, { detach = true })
+if vim.loop.os_uname().release:match("WSL") then
+  vim.notify("User is on wsl")
+  ---@diagnostic disable-next-line
+  vim.ui.open = function(url)
+    local cmd = { "wslview", url }
+    vim.fn.jobstart(cmd, { detach = true })
+  end
+  vim.opt.guicursor = ""
 end

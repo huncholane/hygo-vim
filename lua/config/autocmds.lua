@@ -34,13 +34,13 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- disable mouse dynamically
-vim.api.nvim_create_autocmd({ "FocusGained", "TermLeave" }, {
+vim.api.nvim_create_autocmd({ "FocusGained" }, {
   group = general,
   callback = function()
     vim.opt.mouse = "a"
   end,
 })
-vim.api.nvim_create_autocmd({ "FocusLost", "TermEnter" }, {
+vim.api.nvim_create_autocmd({ "FocusLost" }, {
   group = general,
   callback = function()
     vim.opt.mouse = ""
