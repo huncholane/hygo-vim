@@ -3,4 +3,5 @@
 -- Add any additional options here
 
 -- disable completions with ai
-vim.g.ai_cmp=false
+vim.g.ai_cmp = false
+

@@ -1,11 +1,9 @@
 -- https://github.com/akinsho/toggleterm.nvim
 return {
   "akinsho/toggleterm.nvim",
-  event="VeryLazy",
-  name="Toggleterm",
+  event = "VeryLazy",
+  name = "Toggleterm",
   keys = {
-    -- Names the key group
-    { "<leader>t", desc = "Toggle Terminal"},
     -- Creates a new floating terminal
     {
       "<leader>tf",
@@ -25,11 +23,12 @@ return {
       desc = "Select Terminal",
     },
   },
+  -- opts
   opts = {
     direction = "float",
     open_mapping = [[<c-\>]],
-    start_in_insert = false,
-    float_opts={
+    start_in_insert = true,
+    float_opts = {
       border = "curved",
       winblend = 3,
       highlights = {
@@ -38,4 +37,11 @@ return {
       },
     },
   },
+  -- config
+  config = function(_, opts)
+    require("which-key").add({
+      { "<leader>t", group = "Toggleterm" },
+    })
+    require("toggleterm").setup(opts)
+  end,
 }
