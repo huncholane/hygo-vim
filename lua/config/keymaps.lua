@@ -22,3 +22,11 @@ vim.keymap.set({ "n", "i", "v", "x", "t" }, "<M-i>", function()
     vim.notify("Disabled inlay hint")
   end
 end)
+
+-- Buffer keymaps: Alt-n move right, Alt-p move left
+vim.keymap.set({ "n", "i", "v" }, "<M-l>", function()
+  vim.cmd("bn")
+end, { noremap = true, silent = true, desc = "Buffer Right" })
+vim.keymap.set({ "n", "i", "v" }, "<M-h>", function()
+  vim.cmd("bp")
+end, { noremap = true, silent = true, desc = "Buffer Left" })

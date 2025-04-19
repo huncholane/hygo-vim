@@ -1,14 +1,11 @@
 -- https://github.com/akinsho/toggleterm.nvim
 return {
   "akinsho/toggleterm.nvim",
+  event="VeryLazy",
+  name="Toggleterm",
   keys = {
-    -- Creates name group for which-key
-    {
-      "<leader>t",
-      function()
-      end,
-      desc = "toggleterm",
-    },
+    -- Names the key group
+    { "<leader>t", desc = "Toggle Terminal"},
     -- Creates a new floating terminal
     {
       "<leader>tf",
@@ -29,8 +26,16 @@ return {
     },
   },
   opts = {
-    direction="float",
+    direction = "float",
     open_mapping = [[<c-\>]],
-    start_in_insert=true
+    start_in_insert = false,
+    float_opts={
+      border = "curved",
+      winblend = 3,
+      highlights = {
+        border = "Normal",
+        background = "Normal",
+      },
+    },
   },
 }
