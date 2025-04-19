@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "CmdlineEnter", "QuitPre"
     if vim.bo.modifiable and not vim.bo.readonly and vim.bo.modified then
       local file = vim.fn.expand("%t")
       vim.cmd("silent! write")
+      vim.cmd("LazyFormat")
       vim.notify("Autosaved " .. file .. "\nSource " .. opts.event)
     end
   end,
@@ -33,7 +34,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- disable mouse on enter
-local mouse=vim.opt.mouse
+local mouse = vim.opt.mouse
 vim.api.nvim_create_autocmd("FocusGained", {
   group = general,
   callback = function()
@@ -41,9 +42,8 @@ vim.api.nvim_create_autocmd("FocusGained", {
   end,
 })
 vim.api.nvim_create_autocmd("FocusLost", {
-  group=general,
-  callback=function ()
-    vim.opt.mouse=""
-  end
+  group = general,
+  callback = function()
+    vim.opt.mouse = ""
+  end,
 })
-
