@@ -1,34 +1,36 @@
 return {
-  "kawre/leetcode.nvim",
-  event = "VeryLazy",
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-    "nvim-lua/plenary.nvim",
-    "MunifTanjim/nui.nvim",
-  },
-  keys = {
-    {
-      "<leader>zt",
-      function()
-        vim.cmd("Leet test")
-      end,
-      desc = "Test",
+  {
+    "kawre/leetcode.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
     },
-    {
-      "<leader>za",
-      function()
-        vim.cmd("Leet submit")
-      end,
-      desc = "Submit",
+    keys = {
+      {
+        "<leader>zt",
+        function()
+          vim.cmd("Leet test")
+        end,
+        desc = "Test",
+      },
+      {
+        "<leader>za",
+        function()
+          vim.cmd("Leet submit")
+        end,
+        desc = "Submit",
+      },
     },
+    opts = {
+      lang = "golang",
+    },
+    config = function(_, opts)
+      require("which-key").add({
+        { "<leader>z", group = "LeetCode" },
+      })
+      require("leetcode").setup(opts)
+    end,
   },
-  opts = {
-    lang = "golang",
-  },
-  config = function(_, opts)
-    require("which-key").add({
-      { "<leader>z", group = "LeetCode" },
-    })
-    require("leetcode").setup(opts)
-  end,
 }

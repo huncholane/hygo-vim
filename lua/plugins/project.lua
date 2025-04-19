@@ -1,4 +1,6 @@
 return {
-  "ahmedkhalf/project.nvim",
-  opt = {},
+  {
+    "ahmedkhalf/project.nvim",
+    opt = {},
+  },
 }
