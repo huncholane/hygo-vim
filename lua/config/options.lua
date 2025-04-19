@@ -13,5 +13,4 @@ if vim.loop.os_uname().release:match("WSL") then
     local cmd = { "wslview", url }
     vim.fn.jobstart(cmd, { detach = true })
   end
-  vim.opt.guicursor = ""
 end

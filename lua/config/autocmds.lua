@@ -46,3 +46,18 @@ vim.api.nvim_create_autocmd({ "FocusLost" }, {
     vim.opt.mouse = ""
   end,
 })
+
+-- disable guicursor in terminal
+local guicursor = vim.opt.guicursor
+vim.api.nvim_create_autocmd("TermEnter", {
+  group = general,
+  callback = function()
+    vim.opt.guicursor = ""
+  end,
+})
+vim.api.nvim_create_autocmd("TermLeave", {
+  group = general,
+  callback = function()
+    vim.opt.guicursor = guicursor
+  end,
+})

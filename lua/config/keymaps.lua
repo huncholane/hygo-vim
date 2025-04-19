@@ -23,6 +23,11 @@ vim.keymap.set({ "n", "i", "v", "x", "t" }, "<M-i>", function()
   end
 end)
 
+-- Remove carriage
+vim.keymap.set("n", "<leader>fm", function()
+  vim.cmd(":%s/\r//g")
+end, { desc = "Remove carriage return" })
+
 -- Vim config keymaps
 vim.keymap.set("n", "<leader>v", "", { desc = "Vim Config" })
 vim.keymap.set("n", "<leader>vk", function()
