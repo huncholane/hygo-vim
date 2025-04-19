@@ -22,6 +22,13 @@ return {
       "<cmd>TermSelect<cr>",
       desc = "Select Terminal",
     },
+    -- Normal mode
+    {
+      mode = "t",
+      "<C-]>",
+      [[<C-\><C-n>]],
+      desc = "Terminal mode to normal mode",
+    },
   },
   -- opts
   opts = {

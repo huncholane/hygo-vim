@@ -33,15 +33,14 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Disable New Line Comment",
 })
 
--- disable mouse on enter
-local mouse = vim.opt.mouse
-vim.api.nvim_create_autocmd("FocusGained", {
+-- disable mouse dynamically
+vim.api.nvim_create_autocmd({ "FocusGained", "TermLeave" }, {
   group = general,
   callback = function()
-    vim.opt.mouse = mouse
+    vim.opt.mouse = "a"
   end,
 })
-vim.api.nvim_create_autocmd("FocusLost", {
+vim.api.nvim_create_autocmd({ "FocusLost", "TermEnter" }, {
   group = general,
   callback = function()
     vim.opt.mouse = ""
