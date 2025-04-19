@@ -61,11 +61,3 @@ vim.api.nvim_create_autocmd("TermLeave", {
     vim.opt.guicursor = guicursor
   end,
 })
-
--- reload neotree on commit
-vim.api.nvim_create_autocmd("User", {
-  pattern = "GitCommitPost",
-  callback = function()
-    require("neo-tree.sources.manager").refresh("filesystem")
-  end,
-})
