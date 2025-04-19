@@ -28,20 +28,26 @@ vim.keymap.set("n", "<leader>fm", function()
   vim.cmd(":%s/\r//g")
 end, { desc = "Remove carriage return" })
 
--- Vim config keymaps
-vim.keymap.set("n", "<leader>v", "", { desc = "Vim Config" })
-vim.keymap.set("n", "<leader>vk", function()
+-- lazy keymaps
+vim.keymap.set("n", "<leader>le", function()
+  vim.cmd("LazyExtra")
+end, { desc = "Extras" })
+vim.keymap.set("n", "<leader>lr", function()
+  local file = vim.fn.expand("%:t:r") -- current filename without extension
+  require("lazy").reload("plugins." .. file)
+end, { desc = "Reload Plugin" })
+vim.keymap.set("n", "<leader>lk", function()
   vim.cmd("e ~/.config/nvim/lua/config/keymaps.lua")
 end, { desc = "Edit Keymaps" })
-vim.keymap.set("n", "<leader>vo", function()
+vim.keymap.set("n", "<leader>lo", function()
   vim.cmd("e ~/.config/nvim/lua/config/options.lua")
 end, { desc = "Edit Options" })
-vim.keymap.set("n", "<leader>vp", function()
+vim.keymap.set("n", "<leader>lp", function()
   require("telescope.builtin").find_files({
     cwd = vim.fn.stdpath("config") .. "/lua/plugins",
   })
 end, { desc = "Browse Plugins" })
-vim.keymap.set("n", "<leader>vs", function()
+vim.keymap.set("n", "<leader>ls", function()
   local filename = vim.api.nvim_buf_get_name(0)
   vim.notify("Source " .. filename)
   vim.cmd("silent! write")
