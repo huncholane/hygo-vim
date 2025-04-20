@@ -61,3 +61,22 @@ vim.api.nvim_create_autocmd("TermLeave", {
     vim.opt.guicursor = guicursor
   end,
 })
+
+-- open in the specified root and open session if available
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if arg and vim.fn.isdirectory(vim.fn.argv()[0]) == 1 then
+      vim.cmd("cd " .. vim.fn.argv(0))
+    end
+    local cwd = vim.fn.getcwd()
+    local persistence_root = vim.fn.expand("~/.local/state/nvim/sessions/")
+    local persistence_filename = string.gsub(cwd, "/", "%%") .. ".vim"
+    local potential_session = persistence_root .. persistence_filename
+    for _, value in ipairs(require("persistence").list()) do
+      if value == potential_session then
+        vim.cmd("source " .. vim.fn.fnameescape(value))
+        vim.notify("Loading session for " .. cwd)
+      end
+    end
+  end,
+})
