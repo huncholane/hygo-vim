@@ -36,6 +36,14 @@ alias nv=nvim
 alias vim=nvim
 ```
 
+## Tmux like a pro
+
+- Add this to .tmux.conf
+
+```conf
+source-file ~/.config/nvim/tmux.conf
+```
+
 ## Setup toggle term `~/.config/nvim/lua/plugins/toggleterm.lua`
 
 ```lua
@@ -88,8 +96,7 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {
       vim.notify("Autosaved " .. file .. "\nSource " .. opts.event)
     end
   end,
-})
-```
+}) ```
 
 ## Vim In Your Browser `~/.config/nvim/lua/plugins/firenvim.lua`
 

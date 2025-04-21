@@ -28,3 +28,6 @@ end)
 vim.keymap.set("n", "<leader>fm", function()
   vim.cmd(":%s/\r//g")
 end, { desc = "Remove carriage return" })
+
+-- Go to normal mode
+vim.keymap.set("i", ";;", "<Esc>", { desc = "Go to normal`" })

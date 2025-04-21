@@ -4,6 +4,7 @@
 
 -- disable completions with ai
 vim.g.ai_cmp = false
+
 -- wsl settings
 ---@diagnostic disable-next-line
 if vim.loop.os_uname().release:match("WSL") then
