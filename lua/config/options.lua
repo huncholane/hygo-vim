@@ -15,3 +15,6 @@ if vim.loop.os_uname().release:match("WSL") then
     vim.fn.jobstart(cmd, { detach = true })
   end
 end
+
+-- disable animations
+vim.g.snacks_animate = false
