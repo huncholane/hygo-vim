@@ -5,9 +5,7 @@ convert to neovim.
 
 ## Prerequisites
 
-- If you are using a mac, you need to use iterm2. The default terminal doesn't
-  support true color, so
-  all the colorschemes will look terrible and unreadable.
+- If you are using a mac, you need to use iterm2. The default terminal doesn't support true color, so all the colorschemes will look terrible and unreadable.
 - Install a [NerdFont Font](https://www.nerdfonts.com/font-downloads)
 - [FD-Find](https://github.com/sharkdp/fd)
 
