@@ -22,6 +22,13 @@ return {
         end,
         desc = "Submit",
       },
+      {
+        "<leader>zc",
+        function()
+          vim.cmd("Leet console")
+        end,
+        desc = "Console",
+      },
     },
     opts = {
       lang = "golang",
