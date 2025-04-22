@@ -34,6 +34,18 @@ alias nv=nvim
 alias vim=nvim
 ```
 
+- Set up win32yank for wsl to paste like an absolute gangster
+  - Note use yanky `<leader>p` to paste if you delete before pasting cuz we use unnamedplus default keyboard
+
+```bash
+curl -o win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x86.zip -L
+unzip win32yank.zip
+chmod +x win32yank.exe
+sudo mkdir /mnt/c/tools/
+sudo cp win32yank.exe /mnt/c/tools/
+rm win32yank*
+```
+
 ## Tmux like a pro
 
 - Add this to .tmux.conf

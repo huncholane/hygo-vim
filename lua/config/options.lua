@@ -5,15 +5,35 @@
 -- disable completions with ai
 vim.g.ai_cmp = false
 
+-- disable swap files, not needed with autosession
+vim.opt.swapfile = false
+
 -- wsl settings
 ---@diagnostic disable-next-line
 if vim.loop.os_uname().release:match("WSL") then
   vim.notify("User is on wsl")
+
+  -- open files in windows
   ---@diagnostic disable-next-line
   vim.ui.open = function(url)
     local cmd = { "wslview", url }
     vim.fn.jobstart(cmd, { detach = true })
   end
+
+  -- Fix the clipboard
+  local paste = "powershell.exe -NoProfile -Command Get-Clipboard"
+  paste = 'sh -c "' .. paste .. '"'
+  vim.g.clipboard = {
+    name = "clip-wsl",
+    copy = {
+      ["+"] = "/mnt/c/tools/win32yank.exe -i --clrf",
+      ["*"] = "/mnt/c/tools/win32yank.exe -i --clrf",
+    },
+    paste = {
+      ["+"] = "/mnt/c/tools/win32yank.exe -o --lf",
+      ["*"] = "/mnt/c/tools/win32yank.exe -o --lf",
+    },
+  }
 end
 
 -- disable animations
