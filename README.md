@@ -6,8 +6,8 @@ convert to neovim.
 ## Prerequisites
 
 - If you are using a mac, you need to use iterm2. The default terminal doesn't
-support true color, so
-all the colorschemes will look terrible and unreadable.
+  support true color, so
+  all the colorschemes will look terrible and unreadable.
 - Install a [NerdFont Font](https://www.nerdfonts.com/font-downloads)
 - [FD-Find](https://github.com/sharkdp/fd)
 
@@ -84,7 +84,7 @@ return {
 
 - Add this to autocmd
 
-```lua
+````lua
 -- autosave on focus lost and buffer change
 local group = vim.api.nvim_create_augroup("autosave_group", { clear = true })
 vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {
@@ -126,4 +126,4 @@ return {
     enabled = not vim.g.started_by_firenvim,
   },
 }
-```
+````
