@@ -26,8 +26,8 @@ if vim.loop.os_uname().release:match("WSL") then
   vim.g.clipboard = {
     name = "clip-wsl",
     copy = {
-      ["+"] = "/mnt/c/tools/win32yank.exe -i --clrf",
-      ["*"] = "/mnt/c/tools/win32yank.exe -i --clrf",
+      ["+"] = "/mnt/c/tools/win32yank.exe -i --crlf",
+      ["*"] = "/mnt/c/tools/win32yank.exe -i --crlf",
     },
     paste = {
       ["+"] = "/mnt/c/tools/win32yank.exe -o --lf",

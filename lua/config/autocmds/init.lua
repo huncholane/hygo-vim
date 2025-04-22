@@ -32,6 +32,7 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "CmdlineEnter", "QuitPre"
 })
 
 -- stop making comments on new lines
+vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
   callback = function()
