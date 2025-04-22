@@ -8,11 +8,21 @@
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 local general = vim.api.nvim_create_augroup("autosave_group", { clear = true })
 
--- autosave on focus lost and buffer change
 vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "CmdlineEnter", "QuitPre" }, {
   group = general,
   callback = function(opts)
-    if vim.bo.modifiable and not vim.bo.readonly and vim.bo.modified then
+    local ignore_ft = {
+      "neo-tree",
+      "lazy",
+      "TelescopePrompt",
+      "gitcommit",
+      "help",
+      "qf",
+      "dashboard",
+    }
+
+    local ft = vim.bo.filetype
+    if vim.bo.modifiable and not vim.bo.readonly and vim.bo.modified and not vim.tbl_contains(ignore_ft, ft) then
       local file = vim.fn.expand("%t")
       vim.cmd("silent! write")
       vim.cmd("LazyFormat")
