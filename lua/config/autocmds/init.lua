@@ -6,6 +6,7 @@
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+require("config/autocmds/formatting")
 
 local general = vim.api.nvim_create_augroup("autosave_group", { clear = true })
 
@@ -60,21 +61,4 @@ vim.api.nvim_create_autocmd("TermLeave", {
   callback = function()
     vim.opt.guicursor = guicursor
   end,
-})
-
-vim.api.nvim_create_autocmd({ "BufEnter", "CursorMoved", "CursorHoldI" }, {
-  group = general,
-  callback = function()
-    local win_h = vim.api.nvim_win_get_height(0) -- height of window
-    local off = math.min(vim.o.scrolloff, math.floor(win_h / 2)) -- scroll offset
-    local dist = vim.fn.line("$") - vim.fn.line(".") -- distance from current line to last line
-    local rem = vim.fn.line("w$") - vim.fn.line("w0") + 1 -- num visible lines in current window
-
-    if dist < off and win_h - rem + dist < off then
-      local view = vim.fn.winsaveview()
-      view.topline = view.topline + off - (win_h - rem + dist)
-      vim.fn.winrestview(view)
-    end
-  end,
-  desc = "When at eob, bring the current line towards center screen",
 })

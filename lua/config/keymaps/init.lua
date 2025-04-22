@@ -25,7 +25,7 @@ vim.keymap.set({ "n", "i", "v", "x", "t" }, "<M-i>", function()
 end)
 
 -- Remove carriage
-vim.keymap.set("n", "<leader>fm", function()
+vim.keymap.set("n", "<leader>cu", function()
   vim.cmd(":%s/\r//g")
 end, { desc = "Remove carriage return" })
 
