@@ -22,7 +22,7 @@ vim.keymap.set({ "n" }, "<leader>ci", function()
   else
     vim.notify("Disabled inlay hint")
   end
-end)
+end, { desc = "Toggle Inlay Hints" })
 
 -- Remove carriage
 vim.keymap.set("n", "<leader>cu", function()
