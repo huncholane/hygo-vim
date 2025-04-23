@@ -9,3 +9,7 @@ alias fzf-tmux-prefix='tmux list-keys -T prefix | grep -Po "(?<=prefix\s).*" | f
 
 # fzf tools
 alias fzf-hist='fc -nl | fzf'
+
+# Add the go path
+export GOPATH=$(go env GOPATH)
+export PATH="$GOPATH/bin:$PATH"
