@@ -2,6 +2,7 @@ return {
   {
     -- https://github.com/nvim-neo-tree/neo-tree.nvim/wiki/Recipes#open-with-system-viewer
     "nvim-neo-tree/neo-tree.nvim",
+    -- enabled = false,
     opts = {
       filesystem = {
         hijack_netrw_behavior = "disabled",

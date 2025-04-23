@@ -15,7 +15,7 @@ vim.keymap.set("n", "<leader>ch", function()
 end, { desc = "Toggle Markdown Conceal" })
 
 -- Toggle inlay hints
-vim.keymap.set({ "n", "i", "v", "x", "t" }, "<M-i>", function()
+vim.keymap.set({ "n" }, "<leader>ci", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
   if vim.lsp.inlay_hint.is_enabled() then
     vim.notify("Enabled inlay hint")
@@ -29,5 +29,8 @@ vim.keymap.set("n", "<leader>cu", function()
   vim.cmd(":%s/\r//g")
 end, { desc = "Remove carriage return" })
 
--- Go to normal mode
-vim.keymap.set("i", ";;", "<Esc>", { desc = "Go to normal`" })
+-- restart lsp
+vim.keymap.set("n", "<leader>cz", function()
+  vim.notify("Running LspRestart")
+  vim.cmd("LspRestart")
+end)
