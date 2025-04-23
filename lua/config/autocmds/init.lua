@@ -31,6 +31,14 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "CmdlineEnter", "QuitPre"
   end,
 })
 
+-- tmux files as tmux filetype
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.tmux",
+  callback = function()
+    vim.bo.filetype = "bash"
+  end,
+})
+
 -- stop making comments on new lines
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.api.nvim_create_autocmd("FileType", {
