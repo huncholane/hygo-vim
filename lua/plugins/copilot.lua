@@ -23,6 +23,7 @@ return {
       },
     },
   },
+
   -- chat config
   {
     "CopilotC-Nvim/CopilotChat.nvim",
@@ -32,6 +33,13 @@ return {
       local user = vim.env.USER or "User"
       user = user:sub(1, 1):upper() .. user:sub(2)
       return {
+        prompts = {
+          Docs = {
+            prompt = "Add docstrings that clearly explain parameters and returns with the correct format.",
+            system = "You write good docs.",
+            description = "Add structured, language-aware documentation",
+          },
+        },
         auto_insert_mode = true,
         question_header = "  " .. user .. " ",
         answer_header = "  Copilot ",
@@ -44,6 +52,18 @@ return {
     keys = {
       { "<c-s>", "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
       { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
+      {
+        "<leader>ad",
+        function()
+          local cpc = require("CopilotChat")
+          vim.cmd("normal vaf")
+          cpc.ask(
+            "Add docstrings that clearly explain parameters and returns with the correct indentations using tabs and newlines."
+          )
+        end,
+        desc = "Add docs to function",
+        mode = "n",
+      },
       {
         "<leader>aa",
         function()
@@ -81,6 +101,14 @@ return {
         end,
         desc = "Prompt Actions (CopilotChat)",
         mode = { "n", "v" },
+      },
+      {
+        "<C-a>",
+        "<Esc><C-y>q",
+        ft = "copilot-chat",
+        desc = "Submit and close",
+        mode = { "n", "i" },
+        remap = true,
       },
     },
     config = function(_, opts)
