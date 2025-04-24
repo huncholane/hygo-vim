@@ -7,15 +7,6 @@ function M.set_tabs(length)
   vim.bo.softtabstop = length
   vim.bo.expandtab = true
 end
-vim.api.nvim_create_user_command("SetTabs", function(opts)
-  local length = tonumber(opts.args)
-  if length then
-    M.set_tabs(length)
-    vim.notify("Set tabs to " .. length)
-  else
-    vim.notify("Invalid number", vim.log.levels.ERROR)
-  end
-end, { desc = "Set tab width for current buffer." })
 
 -- configure a language
 function M.config_lang(filetype, func)
@@ -28,5 +19,3 @@ function M.config_lang(filetype, func)
     callback = func,
   })
 end
-
-return M

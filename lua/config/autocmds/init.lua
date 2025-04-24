@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "CmdlineEnter", "QuitPre"
   end,
 })
 
--- tmux files as tmux filetype
+-- tmux files as bash filetype
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.tmux",
   callback = function()
@@ -79,3 +79,14 @@ vim.api.nvim_create_autocmd("TermLeave", {
     vim.opt.guicursor = guicursor
   end,
 })
+
+-- vim command for setting tabs
+vim.api.nvim_create_user_command("SetTabs", function(opts)
+  local length = tonumber(opts.args)
+  if length then
+    require("utils.formatting").set_tabs(length)
+    vim.notify("Set tabs to " .. length)
+  else
+    vim.notify("Invalid number", vim.log.levels.ERROR)
+  end
+end, { desc = "Set tab width for current buffer.", nargs = 1 })
