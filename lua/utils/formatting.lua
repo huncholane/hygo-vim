@@ -19,3 +19,5 @@ function M.config_lang(filetype, func)
     callback = func,
   })
 end
+
+return M
