@@ -44,3 +44,8 @@ end, { desc = "Telescope Document Symbols" })
 vim.keymap.set("n", "<leader>ct", function()
   vim.cmd("Telescope treesitter")
 end, { desc = "Telescope Treesitter" })
+
+-- Telescope hidden files
+vim.keymap.set("n", "<leader>fi", function()
+  vim.cmd("Telescope find_files no_ignore=true")
+end)
