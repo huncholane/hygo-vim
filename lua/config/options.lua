@@ -39,5 +39,6 @@ end
 -- disable animations
 vim.g.snacks_animate = false
 
--- manual folding
+-- fold settings
 vim.opt.foldmethod = "manual"
+vim.opt.foldopen = ""
