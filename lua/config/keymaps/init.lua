@@ -34,3 +34,13 @@ vim.keymap.set("n", "<leader>cz", function()
   vim.notify("Running LspRestart")
   vim.cmd("LspRestart")
 end, { desc = "Restart lsp" })
+
+-- Telescope document symbols
+vim.keymap.set("n", "<leader>cd", function()
+  vim.cmd("Telescope lsp_document_symbols")
+end, { desc = "Telescope Document Symbols" })
+
+-- Telescope treesitter
+vim.keymap.set("n", "<leader>ct", function()
+  vim.cmd("Telescope treesitter")
+end, { desc = "Telescope Treesitter" })
