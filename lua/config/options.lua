@@ -39,6 +39,14 @@ end
 -- disable animations
 vim.g.snacks_animate = false
 
+-- set normal numbers
+vim.cmd("set norelativenumber")
+
 -- fold settings
-vim.opt.foldmethod = "manual"
+-- fold settings
+-- fold settings
+-- fold settings
+-- fold settings
+vim.opt.foldmethod = "expr"
 vim.opt.foldopen = ""
+vim.foldexpr = [[getline(v:lnum)=~'^\s*[--|#|//]']]
