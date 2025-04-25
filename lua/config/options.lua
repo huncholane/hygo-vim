@@ -42,11 +42,7 @@ vim.g.snacks_animate = false
 -- set normal numbers
 vim.cmd("set norelativenumber")
 
--- fold settings
--- fold settings
--- fold settings
--- fold settings
--- fold settings
+-- fold basic comments
 vim.opt.foldmethod = "expr"
 vim.opt.foldopen = ""
-vim.foldexpr = [[getline(v:lnum)=~'^\s*[--|#|//]']]
+vim.opt.foldexpr = [[getline(v:lnum)=~'^\s*[--|#|//]']]
