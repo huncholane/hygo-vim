@@ -106,14 +106,13 @@ _G.CommentFoldExpr = function()
 end
 local foldexpr = "v:lua.CommentFoldExpr()"
 vim.api.nvim_create_user_command("UseFoldTreesitter", function()
-  foldexpr = "v:lua.vim.treesitter.foldexpr()"
   vim.opt_local.foldexpr = foldexpr
 end, { desc = "Set fold expression to treesitter" })
 vim.api.nvim_create_user_command("UseFoldComment", function()
   foldexpr = "v:lua.CommentFoldExpr()"
   vim.opt_local.foldexpr = foldexpr
 end, { desc = "Set foldexpr to comments" })
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd({ "BufReadPost", "FileType" }, {
   group = general,
   pattern = "*",
   callback = function()

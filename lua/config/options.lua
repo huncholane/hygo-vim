@@ -45,4 +45,3 @@ vim.cmd("set norelativenumber")
 -- fold basic comments
 vim.opt.foldmethod = "expr"
 vim.opt.foldopen = ""
-vim.opt.foldexpr = [[getline(v:lnum)=~'^\s*[--|#|//]']]
