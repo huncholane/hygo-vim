@@ -49,3 +49,10 @@ end, { desc = "Telescope Treesitter" })
 vim.keymap.set("n", "<leader>fi", function()
   vim.cmd("Telescope find_files no_ignore=true")
 end, { desc = "Telescope Hidden" })
+
+-- Force comment folding
+vim.keymap.set("n", "zk", function()
+  vim.cmd("UseFoldComment")
+  vim.cmd("normal zx")
+  vim.cmd("normal zM")
+end, { desc = "Forcefully fold comments" })
