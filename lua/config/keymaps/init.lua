@@ -40,7 +40,7 @@ vim.keymap.set("n", "<leader>cd", function()
   vim.cmd("Telescope lsp_document_symbols")
 end, { desc = "Telescope Document Symbols" })
 
--- Telescope treesitter
+-- Telescope treesitter keymap
 vim.keymap.set("n", "<leader>ct", function()
   vim.cmd("Telescope treesitter")
 end, { desc = "Telescope Treesitter" })
