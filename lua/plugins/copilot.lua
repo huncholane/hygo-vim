@@ -53,6 +53,15 @@ return {
       { "<c-s>", "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
       { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
       {
+        "<leader>af",
+        function()
+          local cpc = require("CopilotChat")
+          vim.cmd("normal vaf")
+          cpc.open({ include_contexts_in_prompt = true })
+        end,
+        desc = "Query function",
+      },
+      {
         "<leader>ad",
         function()
           local cpc = require("CopilotChat")
