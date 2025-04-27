@@ -13,3 +13,10 @@ alias fzf-hist='fc -nl | fzf'
 # Add the go path
 export GOPATH=$(go env GOPATH)
 export PATH="$GOPATH/bin:$PATH"
+
+# wezterm
+alias wezterm=wezterm.exe
+function wezterm_osc7_cwd() {
+  printf "\033]7;file://%s%s\033\\" "$(hostname)" "$PWD"
+}
+PROMPT_COMMAND="wezterm_osc7_cwd; $PROMPT_COMMAND"

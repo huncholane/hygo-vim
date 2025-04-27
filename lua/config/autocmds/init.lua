@@ -120,3 +120,19 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "FileType" }, {
     vim.opt_local.foldexpr = foldexpr
   end,
 })
+
+-- wezterm config target from ~/.bashrc
+local WEZTERM_CONFIG_TARGET = os.getenv("WEZTERM_CONFIG_TARGET") or vim.fn.expand("~/.wezterm.lua")
+
+-- update wezterm config wheneverver a file ending in .wezterm.lua
+-- is saved. This uses WEZTERM_TARGET_CONFIG from environment variables
+vim.api.nvim_create_autocmd("BufWritePost", {
+  group = general,
+  desc = "Copies wezterm.lua to the target on save",
+  pattern = "*wezterm.lua",
+  callback = function()
+    vim.notify("Saved wezterm.lua, copying to " .. WEZTERM_CONFIG_TARGET)
+    local src = vim.fn.expand("%:p")
+    vim.system({ "cp", src, WEZTERM_CONFIG_TARGET })
+  end,
+})
