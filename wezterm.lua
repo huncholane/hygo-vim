@@ -73,9 +73,7 @@ config.keys = {
   {
     key = "g",
     mods = "CTRL|SHIFT",
-    action = act.SpawnCommandInNewTab({
-      args = { "lazygit" },
-    }),
+    action = act.SpawnCommandInNewTab({ args = { "lazygit" } }),
   },
 }
 
