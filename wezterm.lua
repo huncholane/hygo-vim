@@ -32,6 +32,9 @@ config.keys = {
   -- debug
   { key = "d", mods = "CTRL|SHIFT", action = act.ShowDebugOverlay },
 
+  -- quit all
+  { key = "q", mods = "CTRL|SHIFT", action = act.QuitApplication },
+
   -- Show the launcher in fuzzy selection mode and have it list all workspaces
   -- and allow activating one.
   {
@@ -73,7 +76,7 @@ config.keys = {
   {
     key = "g",
     mods = "CTRL|SHIFT",
-    action = act.SpawnCommandInNewTab({ args = { "lazygit" } }),
+    action = act.SpawnCommandInNewWindow({ args = { "lazygit" } }),
   },
 }
 
@@ -86,5 +89,7 @@ tabline.apply_to_config(config)
 wezterm.on("window-config-reloaded", function(_, _)
   wezterm.log_info("Successfully loaded config")
 end)
+
+require("workspaces")
 
 return config

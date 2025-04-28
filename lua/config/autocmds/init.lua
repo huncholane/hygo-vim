@@ -97,7 +97,23 @@ end, { desc = "Set tab width for current buffer.", nargs = 1 })
 -- use comments for fold expression
 _G.CommentFoldExpr = function()
   local line = vim.fn.getline(vim.v.lnum)
+  local ft = vim.bo.filetype
   local cs = vim.bo.commentstring:gsub("%%s", ""):gsub(" ", ""):gsub("([^%w])", "%%%1")
+  -- fold python docstrings
+  if ft == "python" then
+    if line:match('""".*"""') then
+      return "="
+    elseif line:match('"""') then
+      if _G.in_docstring then
+        _G.in_docstring = false
+        return "s1" -- end fold
+      else
+        _G.in_docstring = true
+        return "a1" -- begin fold
+      end
+    end
+  end
+  -- dynamically fold comments
   if line:match("^%s*" .. cs) then
     return 1
   else
@@ -118,21 +134,5 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "FileType" }, {
   callback = function()
     vim.opt_local.foldmethod = "expr"
     vim.opt_local.foldexpr = foldexpr
-  end,
-})
-
--- wezterm config target from ~/.bashrc
-local WEZTERM_CONFIG_TARGET = os.getenv("WEZTERM_CONFIG_TARGET") or vim.fn.expand("~/.wezterm.lua")
-
--- update wezterm config wheneverver a file ending in .wezterm.lua
--- is saved. This uses WEZTERM_TARGET_CONFIG from environment variables
-vim.api.nvim_create_autocmd("BufWritePost", {
-  group = general,
-  desc = "Copies wezterm.lua to the target on save",
-  pattern = "*wezterm.lua",
-  callback = function()
-    vim.notify("Saved wezterm.lua, copying to " .. WEZTERM_CONFIG_TARGET)
-    local src = vim.fn.expand("%:p")
-    vim.system({ "cp", src, WEZTERM_CONFIG_TARGET })
   end,
 })
