@@ -99,26 +99,25 @@ _G.CommentFoldExpr = function()
   local line = vim.fn.getline(vim.v.lnum)
   local ft = vim.bo.filetype
   local cs = vim.bo.commentstring:gsub("%%s", ""):gsub(" ", ""):gsub("([^%w])", "%%%1")
-  -- fold python docstrings
+  local should_fold = line:match("^%s*" .. cs) or _G.in_docstring
+  -- python docstrings
   if ft == "python" then
     if line:match('""".*"""') then
-      return "="
-    elseif line:match('"""') then
+      return "0"
+    end
+    if line:match('"""') then
       if _G.in_docstring then
         _G.in_docstring = false
-        return "s1" -- end fold
       else
         _G.in_docstring = true
-        return "a1" -- begin fold
+        should_fold = true
       end
     end
   end
-  -- dynamically fold comments
-  if line:match("^%s*" .. cs) then
+  if should_fold then
     return 1
-  else
-    return 0
   end
+  return 0
 end
 local foldexpr = "v:lua.CommentFoldExpr()"
 vim.api.nvim_create_user_command("UseFoldTreesitter", function()
