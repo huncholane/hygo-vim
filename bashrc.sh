@@ -20,3 +20,6 @@ function wezterm_osc7_cwd() {
   printf "\033]7;file://%s%s\033\\" "$(hostname)" "$PWD"
 }
 PROMPT_COMMAND="wezterm_osc7_cwd; $PROMPT_COMMAND"
+
+# remove stupid zone identifier files
+alias rmzf='sudo find . -name "*.Identifier" -type f -delete'
