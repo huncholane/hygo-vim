@@ -22,4 +22,4 @@ function wezterm_osc7_cwd() {
 PROMPT_COMMAND="wezterm_osc7_cwd; $PROMPT_COMMAND"
 
 # remove stupid zone identifier files
-alias rmzf='sudo find . -name "*.Identifier" -type f -delete'
+alias rmzif='sudo find . -name "*.Identifier" -type f -delete'
