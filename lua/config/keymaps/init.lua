@@ -56,18 +56,3 @@ vim.keymap.set("n", "zk", function()
   vim.cmd("normal zx")
   vim.cmd("normal zM")
 end, { desc = "Forcefully fold comments" })
-
--- leader space to neovim directory
-vim.keymap.set("n", "<leader><Space>", function()
-  local neotree = require("neo-tree.sources.manager").get_state("filesystem")
-  local root = neotree.path or vim.fn.getcwd() -- fallback if somehow nil
-  require("telescope.builtin").find_files({ cwd = root })
-end, { desc = "Find files from Neo-tree root" })
-
--- live grep for neovim directory instead of
--- the entire project
-vim.keymap.set("n", "<leader>/", function()
-  local neotree = require("neo-tree.sources.manager").get_state("filesystem")
-  local root = neotree and neotree.path or vim.fn.getcwd()
-  require("telescope.builtin").live_grep({ cwd = root })
-end, { desc = "Live grep Neo-tree root" })
