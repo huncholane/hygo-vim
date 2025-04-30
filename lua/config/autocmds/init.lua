@@ -24,8 +24,8 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "CmdlineEnter", "QuitPre"
     local ft = vim.bo.filetype
     if vim.bo.modifiable and not vim.bo.readonly and vim.bo.modified and not vim.tbl_contains(ignore_ft, ft) then
       local file = vim.fn.expand("%t")
-      vim.cmd("silent! write")
       vim.cmd("LazyFormat")
+      vim.cmd("silent! write")
       vim.notify("Autosaved " .. file .. "\nSource " .. opts.event)
     end
   end,

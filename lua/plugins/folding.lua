@@ -1,3 +1,5 @@
+local general = vim.api.nvim_create_augroup("Folding", { clear = true })
+
 -- use comments for fold expression
 -- use comments for fold expression
 -- use comments for fold expression
@@ -25,7 +27,7 @@ _G.CommentFoldExpr = function()
   if ft == "lua" then
     if line:match("--%[%[") then
       _G.in_docstring = true
-      should_fold = true
+      -- should_fold = true
     end
     if line:match("--%]%]") and _G.in_docstring then
       _G.in_docstring = false

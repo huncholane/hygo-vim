@@ -23,3 +23,6 @@ PROMPT_COMMAND="wezterm_osc7_cwd; $PROMPT_COMMAND"
 
 # remove stupid zone identifier files
 alias rmzif='sudo find . -name "*.Identifier" -type f -delete'
+
+# copy last command
+alias clc='fc -ln -1 | clip.exe'

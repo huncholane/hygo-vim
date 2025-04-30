@@ -52,6 +52,7 @@ end, { desc = "Telescope Hidden" })
 
 -- Force comment folding
 vim.keymap.set("n", "zk", function()
+  _G.in_docstring = false
   vim.cmd("UseFoldComment")
   vim.cmd("normal zx")
   vim.cmd("normal zM")

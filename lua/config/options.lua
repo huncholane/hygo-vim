@@ -43,6 +43,9 @@ vim.g.snacks_animate = false
 vim.cmd("set norelativenumber")
 
 -- fold basic comments
+-- fold basic comments
+-- fold basic comments
+-- fold basic comments
 vim.opt.foldmethod = "expr"
 vim.opt.foldopen = ""
 vim.opt.foldexpr = "v:lua.CommentFoldExpr()"
