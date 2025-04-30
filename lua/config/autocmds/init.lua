@@ -19,6 +19,7 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "CmdlineEnter", "QuitPre"
       "help",
       "qf",
       "dashboard",
+      "jq",
     }
 
     local ft = vim.bo.filetype
